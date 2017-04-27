@@ -13,5 +13,11 @@
         <property name="CName" type="java.lang.String">
             <column name="c_name" not-null="true" />
         </property>
+
+        <set name="zpInfoSet" inverse="true" cascade="delete">
+    		<key column="c_Id"/>
+    	<one-to-many class="pojo.RcZp"/>
+   		</set>
+        
     </class>
 </hibernate-mapping>

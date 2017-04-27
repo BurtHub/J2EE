@@ -10,8 +10,14 @@
             <column name="Id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="rcUser" class="pojo.RcUser" fetch="select">
-            <column name="u_id" not-null="true" />
-        </many-to-one>
+        
+        <many-to-one name="rcUser" column="u_id" class="pojo.RcUser"/>
+        
+         <property name="jlInformation" type="java.lang.String">
+            <column name="jl_information" />
+        </property>
+        
+      
+      
     </class>
 </hibernate-mapping>

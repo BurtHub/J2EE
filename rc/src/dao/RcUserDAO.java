@@ -3,10 +3,13 @@ package dao;
 import java.util.List;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import pojo.HibernateSessionFactory;
 import pojo.RcUser;
 
 /**
@@ -27,7 +30,11 @@ public class RcUserDAO extends BaseHibernateDAO {
 	public void save(RcUser transientInstance) {
 		log.debug("saving RcUser instance");
 		try {
-			getSession().save(transientInstance);
+			System.out.println(transientInstance);
+			Session session = getSession();
+			Transaction tran = session.beginTransaction();
+			session.save(transientInstance);
+			tran.commit();
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);

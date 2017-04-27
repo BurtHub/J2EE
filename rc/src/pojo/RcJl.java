@@ -1,5 +1,8 @@
 package pojo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * RcJl entity. @author MyEclipse Persistence Tools
  */
@@ -10,11 +13,26 @@ public class RcJl implements java.io.Serializable {
 
 	private Integer id;
 	private RcUser rcUser;
-
+	private String jlInformation;
 	// Constructors
+
+	
+
+	public String getJlInformation() {
+		return jlInformation;
+	}
+
+	public void setJlInformation(String jlInformation) {
+		this.jlInformation = jlInformation;
+	}
 
 	/** default constructor */
 	public RcJl() {
+	}
+
+	@Override
+	public String toString() {
+		return "RcJl [id=" + id + ", rcUser=" + rcUser + "]";
 	}
 
 	/** full constructor */

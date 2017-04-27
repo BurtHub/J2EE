@@ -3,6 +3,8 @@ package dao;
 import java.util.List;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +30,10 @@ public class RcCompanyDAO extends BaseHibernateDAO {
 	public void save(RcCompany transientInstance) {
 		log.debug("saving RcCompany instance");
 		try {
-			getSession().save(transientInstance);
+			Session session = getSession();
+			Transaction transaction = session.beginTransaction();
+			session.save(transientInstance);
+			transaction.commit();
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -39,7 +44,12 @@ public class RcCompanyDAO extends BaseHibernateDAO {
 	public void delete(RcCompany persistentInstance) {
 		log.debug("deleting RcCompany instance");
 		try {
-			getSession().delete(persistentInstance);
+			
+			Session session = getSession();
+			Transaction transaction = session.beginTransaction();
+			session.delete(persistentInstance);
+			transaction.commit();
+			
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -50,8 +60,8 @@ public class RcCompanyDAO extends BaseHibernateDAO {
 	public RcCompany findById(java.lang.Integer id) {
 		log.debug("getting RcCompany instance with id: " + id);
 		try {
-			RcCompany instance = (RcCompany) getSession().get("pojo.RcCompany",
-					id);
+			//RcCompany instance = (RcCompany) getSession().get("pojo.RcCompany",id);
+			RcCompany instance = (RcCompany)getSession().load(RcCompany.class, id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

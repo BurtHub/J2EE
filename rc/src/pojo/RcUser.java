@@ -15,8 +15,23 @@ public class RcUser implements java.io.Serializable {
 	private String name;
 	private String pass;
 	
+	@Override
+	public String toString() {
+		return "RcUser [id=" + id + ", name=" + name + ", pass=" + pass
+				+ ", zpInfoSet=" + zpInfoSet + "]";
+	}
+
+	private Set<RcJl> zpInfoSet =new HashSet<RcJl>();
 
 	// Constructors
+
+	public Set<RcJl> getZpInfoSet() {
+		return zpInfoSet;
+	}
+
+	public void setZpInfoSet(Set<RcJl> zpInfoSet) {
+		this.zpInfoSet = zpInfoSet;
+	}
 
 	/** default constructor */
 	public RcUser() {

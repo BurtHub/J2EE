@@ -9,7 +9,7 @@ public class RcZp implements java.io.Serializable {
 	// Fields
 
 	private Integer id;
-	private Integer CId;
+	private RcCompany CId;
 	private String zpInformation;
 
 	// Constructors
@@ -19,12 +19,14 @@ public class RcZp implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public RcZp(Integer CId) {
+	public RcZp(Integer id, RcCompany CId) {
+		this.id = id;
 		this.CId = CId;
 	}
 
 	/** full constructor */
-	public RcZp(Integer CId, String zpInformation) {
+	public RcZp(Integer id, RcCompany CId, String zpInformation) {
+		this.id = id;
 		this.CId = CId;
 		this.zpInformation = zpInformation;
 	}
@@ -39,11 +41,11 @@ public class RcZp implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Integer getCId() {
+	public RcCompany getCId() {
 		return this.CId;
 	}
 
-	public void setCId(Integer CId) {
+	public void setCId(RcCompany CId) {
 		this.CId = CId;
 	}
 
@@ -54,5 +56,8 @@ public class RcZp implements java.io.Serializable {
 	public void setZpInformation(String zpInformation) {
 		this.zpInformation = zpInformation;
 	}
-
+	@Override
+	public String toString() {
+	return this.zpInformation;
+	}
 }

@@ -10,11 +10,19 @@
             <column name="Id" />
             <generator class="identity" />
         </id>
+        
         <property name="name" type="java.lang.String">
             <column name="name" not-null="true" />
         </property>
+        
         <property name="pass" type="java.lang.String">
             <column name="pass" not-null="true" />
         </property>   
+        
+         <set name="zpInfoSet" inverse="true" cascade="delete">
+    		<key column="u_id"/>
+    		<one-to-many class="pojo.RcJl"/>
+  		 </set>
+  		
     </class>
 </hibernate-mapping>

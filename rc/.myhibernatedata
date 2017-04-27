@@ -1,5 +1,5 @@
 #MyEclipse Hibernate Properties
-#Wed Apr 19 17:42:41 CST 2017
+#Wed Apr 26 14:26:08 CST 2017
 sessionFactoryName=pojo.HibernateSessionFactory
 genBasicCompId=true
 profile=
@@ -22,4 +22,3 @@ reSettingsFile=
 configFile=/rc/src/hibernate.cfg.xml
 createConfigFile=true
 addLibs2Classpath=true
-baseDaoClass=BaseHibernateDAO

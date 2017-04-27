@@ -43,7 +43,14 @@ public class RcZpDAO extends BaseHibernateDAO {
 	public void delete(RcZp persistentInstance) {
 		log.debug("deleting RcZp instance");
 		try {
-			getSession().delete(persistentInstance);
+			
+			Session session = getSession();
+			Transaction transaction = session.beginTransaction();
+			RcZp loadResult = (RcZp) session.get(RcZp.class, 1);
+			//先获取后删除 先load 后 delete
+			//删除需要先Load或Get到那条记录
+			session.delete(loadResult);
+			transaction.commit();
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -54,7 +61,8 @@ public class RcZpDAO extends BaseHibernateDAO {
 	public RcZp findById(java.lang.Integer id) {
 		log.debug("getting RcZp instance with id: " + id);
 		try {
-			RcZp instance = (RcZp) getSession().get("pojo.RcZp", id);
+			//RcZp instance = (RcZp) getSession().get("pojo.RcZp", id);
+			RcZp instance = (RcZp) getSession().load("pojo.RcZp", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

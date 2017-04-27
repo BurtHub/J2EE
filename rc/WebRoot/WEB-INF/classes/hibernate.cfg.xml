@@ -22,11 +22,13 @@
 			jdbcConn
 		</property>
 		<property name="hbm2ddl.auto">update</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
 		<mapping resource="pojo/RcUser.hbm.xml" />
 		<mapping resource="pojo/RcCompany.hbm.xml" />
 		<mapping resource="pojo/RcZp.hbm.xml" />
 		<mapping resource="pojo/RcJl.hbm.xml" />
-		
+
 	</session-factory>
 
 </hibernate-configuration>

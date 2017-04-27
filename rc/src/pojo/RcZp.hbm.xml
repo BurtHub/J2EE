@@ -10,11 +10,11 @@
             <column name="Id" />
             <generator class="identity" />
         </id>
-        <property name="CId" type="java.lang.Integer">
-            <column name="c_id" not-null="true" />
-        </property>
+       
         <property name="zpInformation" type="java.lang.String">
             <column name="zp_information" />
         </property>
+        
+        <many-to-one name="CId" column="c_Id" class="pojo.RcCompany"/>
     </class>
 </hibernate-mapping>
